@@ -12,8 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="69493c27-1331-493b-9d99-09d944748c19" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,10 +48,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.App">
     <configuration name="DemoController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -99,7 +103,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644470323625</updated>
-      <workItem from="1644470326999" duration="1860000" />
+      <workItem from="1644470326999" duration="3802000" />
     </task>
     <servers />
   </component>
@@ -118,6 +122,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="1137" y="354" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1644473169692">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1137" y="354" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1644473169692" />
     <state x="440" y="99" key="#项目结构" timestamp="1644471021465">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -154,5 +162,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
+    <state x="922" y="169" key="SettingsEditor" timestamp="1644473182922">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="922" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1644473182922" />
   </component>
 </project>
