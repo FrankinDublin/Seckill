@@ -21,10 +21,11 @@ public class RespBean {
     }
 
     public static RespBean error(RespBeanEnum respBeanEnum){       //失败有很多原因
-        return new RespBean(respBeanEnum.ERROR.getCode(),respBeanEnum.ERROR.getMessage(),null);
+        return new RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),null);
+
     }
 
-    public static RespBean error(RespBeanEnum respBeanEnum,Object obj){       
-        return new RespBean(respBeanEnum.ERROR.getCode(),respBeanEnum.ERROR.getMessage(),obj);
+    public static RespBean error(RespBeanEnum respBeanEnum,Object obj){
+        return new RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),obj);
     }
 }

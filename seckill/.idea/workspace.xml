@@ -11,9 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69493c27-1331-493b-9d99-09d944748c19" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/MD5Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/vo/RespBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/vo/RespBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/vo/RespBeanEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/vo/RespBeanEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +29,7 @@
       <list>
         <option value="HTML File" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -59,13 +64,21 @@
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="Lombok" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources\templates" />
       <recent name="D:\IdeaProjects\myproject\seckill\src\main\java\org\example\domain" />
       <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.validator" />
+      <recent name="org.example.util" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.service.impl" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.App">
@@ -75,6 +88,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MD5Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.util.MD5Util" />
+      <module name="seckill" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -98,6 +124,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.App" />
+        <item itemvalue="应用程序.MD5Util" />
         <item itemvalue="应用程序.DemoController" />
       </list>
     </recent_temporary>
@@ -112,7 +139,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644470323625</updated>
-      <workItem from="1644470326999" duration="5879000" />
+      <workItem from="1644470326999" duration="9570000" />
+      <workItem from="1644552387058" duration="4745000" />
     </task>
     <servers />
   </component>
@@ -129,6 +157,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1137" y="354" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1644473169692">
@@ -139,41 +168,41 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="#项目结构/0.0.1920.1050@0.0.1920.1050" timestamp="1644471021465" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1644557049537">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049537" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1644471885087">
+    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1644557049538">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644471885087" />
-    <state x="495" y="171" key="SettingsEditor" timestamp="1644475591138">
+    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644557049538" />
+    <state x="495" y="171" key="SettingsEditor" timestamp="1644555898486">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="495" y="171" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1644475591138" />
+    <state x="495" y="171" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1644555898486" />
   </component>
 </project>
