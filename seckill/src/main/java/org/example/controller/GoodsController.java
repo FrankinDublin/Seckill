@@ -2,6 +2,8 @@ package org.example.controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.example.domain.User;
+import org.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -20,33 +22,23 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/goods")
 public class GoodsController {
+    @Autowired
+    UserService userService;
     @RequestMapping("/toList")
-    public String toList(HttpSession session, Model model, HttpServletRequest request){
+    public String toList(HttpServletResponse response, Model model, HttpServletRequest request,@CookieValue("userTicket") String ticket){
         /**
         * @Description: 跳转商品列表页
         * @Param: [session, model, ticket]
         * @return: java.lang.String
         */
-        String ticket = showCookies(request,"userTicket");
-        System.out.println("Controller ticket:"+ticket);
         if(StringUtils.isEmpty(ticket)) return "login";
-        User user = (User) session.getAttribute(ticket);
-        System.out.println(user);
+        //User user = (User) session.getAttribute(ticket);
+        User user = userService.getUserByCookie(ticket, response, request);
+        System.out.println("user==null:"+user);
         if(user == null) return "login";
         model.addAttribute("user",user);
+        System.out.println(user.getNickname());
         return "goodsList";
     }
-    public String showCookies(HttpServletRequest request,String name){
-        Cookie[] cookies = request.getCookies();//根据请求数据，找到cookie数组
 
-        if (null==cookies) {//如果没有cookie数组
-            System.out.println("没有cookie");
-        } else {
-            for(Cookie cookie : cookies){
-                //System.out.println(cookie.getName());
-                if(name.equals(cookie.getName())) return cookie.getValue();
-            }
-        }
-        return "error";
-    }
 }

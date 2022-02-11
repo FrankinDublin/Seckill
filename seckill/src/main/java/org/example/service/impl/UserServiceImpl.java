@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.example.domain.User;
 import org.example.exception.GlobalException;
 import org.example.mapper.UserMapper;
@@ -39,11 +40,36 @@ public class UserServiceImpl implements UserService {
         }
         String ticket = UUIDUtil.uuid();
         //request.getSession().setAttribute(ticket,user);
-        //将用户信息
+        //将用户信息存入redis中
         redisTemplate.opsForValue().set("user"+ticket,user);
         Cookie cookie = new Cookie("userTicket",ticket);
         cookie.setPath("/");
         response.addCookie(cookie);
+
         return RespBean.success(RespBeanEnum.SUCCESS);
+    }
+
+    @Override
+    public User getUserByCookie(String userTicket, HttpServletResponse response, HttpServletRequest request) {
+        if(StringUtils.isEmpty(userTicket)) return null;
+        User u = (User) redisTemplate.opsForValue().get("user" + userTicket);
+        if(u!=null){
+            Cookie cookie = getCookie(request, "userTicket");
+            cookie.setValue(userTicket);
+        }
+        return u;
+    }
+    public static Cookie getCookie(HttpServletRequest request, String cookieName) {
+
+        Cookie cookies[] = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                // 找到指定的cookie
+                if (cookie != null && cookieName.equals(cookie.getName())) {
+                    return cookie;
+                }
+            }
+        }
+        return null;
     }
 }

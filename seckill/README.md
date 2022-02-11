@@ -30,3 +30,5 @@ JMeter
 
 ### 3. 全局异常统一处理
 通过拦截所有异常，对各种异常进行相应的处理，当遇到异常就逐层上抛，一直抛到最终由一个统一的、专门负责异常处理的地方处理，这有利于对异常的维护。
+
+总流程：用户输入账号密码--后端通过账号查出完整信息--生成userTicket(uuid)--将userTicket存入cookie--将用户对象通过json存入redis--验证页面通过cookie拿出UserTicket--通过userTicket从redis中取出user
