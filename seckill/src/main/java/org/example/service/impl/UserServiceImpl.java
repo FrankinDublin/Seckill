@@ -5,21 +5,27 @@ import org.example.exception.GlobalException;
 import org.example.mapper.UserMapper;
 import org.example.service.UserService;
 import org.example.util.MD5Util;
-import org.example.util.ValidatorUtil;
+import org.example.util.UUIDUtil;
 import org.example.vo.LoginVo;
 import org.example.vo.RespBean;
 import org.example.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import static org.springframework.util.StringUtils.isEmpty;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper mapper;
+    @Autowired
+    RedisTemplate redisTemplate;
+    
     @Override
-    public RespBean doLogin(LoginVo loginVo) {
+    public RespBean doLogin(LoginVo loginVo, HttpServletResponse response, HttpServletRequest request) {
         String mobile = loginVo.getMobile();
         String password = loginVo.getPassword();
         /*if(isEmpty(mobile) || isEmpty(password)) return RespBean.error(RespBeanEnum.LOGIN_ERROR);
@@ -31,6 +37,13 @@ public class UserServiceImpl implements UserService {
         if(!MD5Util.formPassToDBPass(password,user.getSalt()).equals(user.getPassword())){
             throw new GlobalException(RespBeanEnum.LOGIN_ERROR);
         }
+        String ticket = UUIDUtil.uuid();
+        //request.getSession().setAttribute(ticket,user);
+        //将用户信息
+        redisTemplate.opsForValue().set("user"+ticket,user);
+        Cookie cookie = new Cookie("userTicket",ticket);
+        cookie.setPath("/");
+        response.addCookie(cookie);
         return RespBean.success(RespBeanEnum.SUCCESS);
     }
 }

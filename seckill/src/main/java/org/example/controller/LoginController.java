@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 
@@ -29,14 +31,14 @@ public class LoginController {
 
     @ResponseBody
     @RequestMapping("/do_login")
-    public RespBean doLogin(@Valid LoginVo loginVo){
+    public RespBean doLogin(@Valid LoginVo loginVo, HttpServletResponse response, HttpServletRequest request){
         /**
         * @Description: 接收前端的信息，根据信息查找对应用户信息返回给前端
         * @Param: [loginVo：电话和密码]
         * @return: org.example.vo.RespBean：查找到的用户信息
         */
         log.info(loginVo.toString());
-        RespBean respBean = service.doLogin(loginVo);
+        RespBean respBean = service.doLogin(loginVo,response,request);
         log.info(respBean.toString());
         return respBean;
     }
