@@ -15,7 +15,6 @@ import java.util.List;
  * @create: 2022-02-12 12:41
  */
 @Configuration
-@EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Autowired
     UserArgumentResolver userArgumentResolver;
