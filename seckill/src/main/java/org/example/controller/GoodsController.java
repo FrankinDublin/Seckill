@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.example.domain.User;
 import org.example.service.GoodsService;
 import org.example.service.UserService;
+import org.example.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * @description: 商品
@@ -48,11 +50,33 @@ public class GoodsController {
     }
 
     @RequestMapping("/toDetail/{goodsId}")
-    @ResponseBody
     public String toDetail(Model model, User user, @PathVariable Long goodsId){
+        System.out.println(user+"is null");
         model.addAttribute("user",user);
-        model.addAttribute("goods",goodsService.findGoodsVoByGoodsId(goodsId));
-        return "goodsDetail";
+
+        GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
+        model.addAttribute("goods",goodsVo);
+
+        Date startDate = goodsVo.getStartDate();
+        Date endDate = goodsVo.getEndDate();
+        Date nowDate = new Date();
+        int seckillStatus = 0;
+        int remainSeconds = 0;
+        if(nowDate.before(startDate)){
+            //未开始
+            remainSeconds = (int)((startDate.getTime() - nowDate.getTime()) / 1000);
+        }else if(nowDate.after(endDate)){
+            //已结束
+            seckillStatus = 2;
+            remainSeconds = -1;
+        }else{
+            //进行中
+            seckillStatus = 1;
+        }
+        model.addAttribute("seckillStatus",seckillStatus);
+        model.addAttribute("remainSeconds", remainSeconds);
+
+        return "goods_detail";
     }
 
 }
