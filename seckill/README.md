@@ -31,4 +31,9 @@ JMeter
 ### 3. 全局异常统一处理
 通过拦截所有异常，对各种异常进行相应的处理，当遇到异常就逐层上抛，一直抛到最终由一个统一的、专门负责异常处理的地方处理，这有利于对异常的维护。
 
-总流程：用户输入账号密码--后端通过账号查出完整信息--生成userTicket(uuid)--将userTicket存入cookie--将用户对象通过json存入redis--验证页面通过cookie拿出UserTicket--通过userTicket从redis中取出user
+### 2. session共享
+验证用户账号密码都正确情况下，通过UUID生成唯一id作为token，再将token作为key、用户信息作为value模拟session存储到redis，同时将token存储到cookie，保存登录状态
+
+好处： 在分布式集群情况下，服务器间需要同步，定时同步各个服务器的session信息，会因为延迟到导致session不一致，使用redis把session数据集中存储起来，解决session不一致问题。
+
+总流程：用户输入账号密码--后端通过账号查出完整信息--生成token(uuid)--将token存入cookie--将token和用户对象(通过json)存入redis--验证页面通过cookie拿出token--通过token从redis中取出user

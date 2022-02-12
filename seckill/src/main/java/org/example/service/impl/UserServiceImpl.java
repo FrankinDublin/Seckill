@@ -5,6 +5,7 @@ import org.example.domain.User;
 import org.example.exception.GlobalException;
 import org.example.mapper.UserMapper;
 import org.example.service.UserService;
+import org.example.util.CookieUtil;
 import org.example.util.MD5Util;
 import org.example.util.UUIDUtil;
 import org.example.vo.LoginVo;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -42,9 +44,7 @@ public class UserServiceImpl implements UserService {
         //request.getSession().setAttribute(ticket,user);
         //将用户信息存入redis中
         redisTemplate.opsForValue().set("user"+ticket,user);
-        Cookie cookie = new Cookie("userTicket",ticket);
-        cookie.setPath("/");
-        response.addCookie(cookie);
+        CookieUtil.addCookie(response,"userTicket",ticket);
 
         return RespBean.success(RespBeanEnum.SUCCESS);
     }
@@ -54,22 +54,12 @@ public class UserServiceImpl implements UserService {
         if(StringUtils.isEmpty(userTicket)) return null;
         User u = (User) redisTemplate.opsForValue().get("user" + userTicket);
         if(u!=null){
-            Cookie cookie = getCookie(request, "userTicket");
+            Cookie cookie = CookieUtil.getCookie(request, "userTicket");
             cookie.setValue(userTicket);
         }
         return u;
     }
-    public static Cookie getCookie(HttpServletRequest request, String cookieName) {
 
-        Cookie cookies[] = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                // 找到指定的cookie
-                if (cookie != null && cookieName.equals(cookie.getName())) {
-                    return cookie;
-                }
-            }
-        }
-        return null;
-    }
+
+
 }

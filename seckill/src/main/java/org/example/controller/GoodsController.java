@@ -25,17 +25,17 @@ public class GoodsController {
     @Autowired
     UserService userService;
     @RequestMapping("/toList")
-    public String toList(HttpServletResponse response, Model model, HttpServletRequest request,@CookieValue("userTicket") String ticket){
+    public String toList(Model model,User user){
         /**
         * @Description: 跳转商品列表页
         * @Param: [session, model, ticket]
         * @return: java.lang.String
         */
-        if(StringUtils.isEmpty(ticket)) return "login";
+        /*if(StringUtils.isEmpty(ticket)) return "login";
         //User user = (User) session.getAttribute(ticket);
-        User user = userService.getUserByCookie(ticket, response, request);
+        User user = userService.getUserByCookie(ticket, response, request);     //判断逻辑放入参数解析器中了
         System.out.println("user==null:"+user);
-        if(user == null) return "login";
+        if(user == null) return "login";*/
         model.addAttribute("user",user);
         System.out.println(user.getNickname());
         return "goodsList";
