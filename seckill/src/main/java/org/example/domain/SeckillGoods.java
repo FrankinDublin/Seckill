@@ -8,6 +8,7 @@ import java.util.Date;
 public class SeckillGoods {
     private Long id;
     private Long goodsId;
+    private Double seckillPrice;
     private Integer stockCount;
     private Date startDate;
     private Date endDate;
@@ -59,5 +60,14 @@ public class SeckillGoods {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+
+    public Double getSeckillPrice() {
+        return seckillPrice;
+    }
+
+    public void setSeckillPrice(Double seckillPrice) {
+        this.seckillPrice = seckillPrice;
     }
 }

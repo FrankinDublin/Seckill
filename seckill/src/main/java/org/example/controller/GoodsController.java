@@ -51,7 +51,7 @@ public class GoodsController {
 
     @RequestMapping("/toDetail/{goodsId}")
     public String toDetail(Model model, User user, @PathVariable Long goodsId){
-        System.out.println(user+"is null");
+
         model.addAttribute("user",user);
 
         GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
