@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
+ * 优化前：1100
  * @description: 商品
  * @author: Frankin
  * @create: 2022-02-11 13:36

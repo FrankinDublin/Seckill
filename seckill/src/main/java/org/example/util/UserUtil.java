@@ -1,20 +1,23 @@
 package org.example.util;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.domain.User;
+import org.example.vo.RespBean;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+* @Description: 生成压测所需的用户
+* @Param: 
+* @return: 
+*/ 
 public class UserUtil {
 
 	private static Connection getConn() throws Exception {
@@ -87,11 +90,14 @@ public class UserUtil {
 			inputStream.close();
 			bout.close();
 			String response = new String(bout.toByteArray());
-			JSONObject jo = JSON.parseObject(response);
-			String token = jo.getString("data");
+			ObjectMapper om = new ObjectMapper();
+			RespBean respBean = om.readValue(response,RespBean.class);
+			String userTicket = ((String) respBean.getObj());
+			/*JSONObject jo = JSON.parseObject(response);
+			String token = jo.getString("data");*/
 			System.out.println("create token : " + user.getId());
 			
-			String row = user.getId()+","+token;
+			String row = user.getId()+","+userTicket;
 			raf.seek(raf.length());
 			raf.write(row.getBytes());
 			raf.write("\r\n".getBytes());

@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         redisTemplate.opsForValue().set("user"+ticket,user);
         CookieUtil.addCookie(response,"userTicket",ticket);
 
-        return RespBean.success(RespBeanEnum.SUCCESS);
+        return RespBean.success(ticket);
     }
 
     @Override

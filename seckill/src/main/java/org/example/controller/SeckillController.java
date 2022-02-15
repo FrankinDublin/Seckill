@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
+ * 优化前：790
  * @description: 处理秒杀业务
  * @author: Frankin
  * @create: 2022-02-14 14:28

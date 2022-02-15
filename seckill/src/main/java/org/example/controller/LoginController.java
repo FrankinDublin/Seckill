@@ -39,6 +39,7 @@ public class LoginController {
         */
         log.info(loginVo.toString());
         RespBean respBean = service.doLogin(loginVo,response,request);
+        System.out.println(respBean.getObj());
         log.info(respBean.toString());
         return respBean;
     }
