@@ -45,7 +45,6 @@ public class GoodsController {
         if(user == null) return "login";*/
         model.addAttribute("user",user);
         model.addAttribute("goodsList",goodsService.findGoodsVo());
-        System.out.println(user.getNickname());
         return "goods_list";
     }
 

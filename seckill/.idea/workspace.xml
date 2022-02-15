@@ -12,15 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="69493c27-1331-493b-9d99-09d944748c19" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GoodsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domain/SeckillGoods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domain/SeckillGoods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/vo/RespBeanEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/vo/RespBeanEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goods_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goods_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/controller/GoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/controller/GoodsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/domain/SeckillGoods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/domain/SeckillGoods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/vo/RespBeanEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/vo/RespBeanEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/goods_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/goods_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +25,8 @@
       <list>
         <option value="Enum" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,31 +58,32 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources\templates" />
-      <recent name="D:\IdeaProjects\myproject\seckill\src\main\java\org\example\domain" />
-      <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.example.mapper" />
-      <recent name="org.example.vo" />
-      <recent name="org.example.util" />
-      <recent name="org.example.validator" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.mapper" />
       <recent name="org.example.service.impl" />
       <recent name="org.example.service" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.util" />
+      <recent name="org.example.mapper" />
+      <recent name="org.example.vo" />
+      <recent name="org.example.validator" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources\templates" />
+      <recent name="D:\IdeaProjects\myproject\seckill\src\main\java\org\example\domain" />
+      <recent name="D:\IdeaProjects\myproject\seckill\src\main\resources" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.App">
+  <component name="RunManager" selected="应用程序.UserUtil">
     <configuration name="DemoController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.controller.DemoController" />
       <module name="seckill" />
@@ -129,6 +123,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.util.UserUtil" />
+      <module name="seckill" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="seckill" />
       <extension name="coverage">
@@ -149,9 +156,11 @@
       <item itemvalue="应用程序.DemoController" />
       <item itemvalue="应用程序.MD5Util" />
       <item itemvalue="应用程序.SeckillOrderServiceImpl" />
+      <item itemvalue="应用程序.UserUtil" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.UserUtil" />
         <item itemvalue="Spring Boot.App" />
         <item itemvalue="应用程序.SeckillOrderServiceImpl" />
         <item itemvalue="应用程序.MD5Util" />
@@ -173,7 +182,8 @@
       <workItem from="1644552387058" duration="13193000" />
       <workItem from="1644640636192" duration="2082000" />
       <workItem from="1644652064263" duration="632000" />
-      <workItem from="1644819191043" duration="9524000" />
+      <workItem from="1644819191043" duration="9948000" />
+      <workItem from="1644903001545" duration="6343000" />
     </task>
     <servers />
   </component>
@@ -209,66 +219,70 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="300" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1644646602033" />
-    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1644827973705">
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1644914854373">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1644827973705" />
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1644914854373" />
     <state x="440" y="99" key="#项目结构" timestamp="1644471021465">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="#项目结构/0.0.1920.1050@0.0.1920.1050" timestamp="1644471021465" />
-    <state width="1877" height="352" key="GridCell.Tab.0.bottom" timestamp="1644828277853">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1644915186508">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277853" />
-    <state width="1877" height="352" key="GridCell.Tab.0.center" timestamp="1644828277853">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644915186508" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1644915186508">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277853" />
-    <state width="1877" height="352" key="GridCell.Tab.0.left" timestamp="1644828277853">
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644915186508" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1644915186508">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277853" />
-    <state width="1877" height="352" key="GridCell.Tab.0.right" timestamp="1644828277853">
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644915186508" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1644915186508">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277853" />
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1644828277854">
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644915186508" />
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1644915118195">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277854" />
-    <state width="1877" height="352" key="GridCell.Tab.1.center" timestamp="1644828277853">
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644915118195" />
+    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1644915118195">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277853" />
-    <state width="1877" height="352" key="GridCell.Tab.1.left" timestamp="1644828277853">
+    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644915118195" />
+    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1644915118194">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277853" />
-    <state width="1877" height="352" key="GridCell.Tab.1.right" timestamp="1644828277854">
+    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644915118194" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1644915118195">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277854" />
-    <state width="1877" height="352" key="GridCell.Tab.2.bottom" timestamp="1644828277854">
+    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644915118195" />
+    <state width="1877" height="352" key="GridCell.Tab.2.bottom" timestamp="1644829153368">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277854" />
-    <state width="1877" height="352" key="GridCell.Tab.2.center" timestamp="1644828277854">
+    <state width="1877" height="352" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1644829153368" />
+    <state width="1877" height="352" key="GridCell.Tab.2.center" timestamp="1644829153368">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277854" />
-    <state width="1877" height="352" key="GridCell.Tab.2.left" timestamp="1644828277854">
+    <state width="1877" height="352" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1644829153368" />
+    <state width="1877" height="352" key="GridCell.Tab.2.left" timestamp="1644829153368">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277854" />
-    <state width="1877" height="352" key="GridCell.Tab.2.right" timestamp="1644828277854">
+    <state width="1877" height="352" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1644829153368" />
+    <state width="1877" height="352" key="GridCell.Tab.2.right" timestamp="1644829153368">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644828277854" />
-    <state x="495" y="171" key="SettingsEditor" timestamp="1644555898486">
+    <state width="1877" height="352" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1644829153368" />
+    <state x="495" y="171" key="SettingsEditor" timestamp="1644911568650">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="495" y="171" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1644555898486" />
+    <state x="495" y="171" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1644911568650" />
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1644911420497">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup/0.0.1920.1050@0.0.1920.1050" timestamp="1644911420497" />
     <state x="731" y="344" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1644821870431">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -277,6 +291,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="510" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1050@0.0.1920.1050" timestamp="1644561389638" />
+    <state x="660" y="257" width="599" height="536" key="find.popup" timestamp="1644911604404">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="660" y="257" width="599" height="536" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1644911604404" />
     <state x="680" y="311" key="git4idea.merge.GitPullDialog" timestamp="1644566055241">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -285,10 +303,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="736" y="281" key="refactoring.ChangeSignatureDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1644827302423" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1644650604501">
+    <state x="616" y="243" key="run.anything.popup" timestamp="1644910770297">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1644650604501" />
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1644910770297" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1644911431264">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1644911431264" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
