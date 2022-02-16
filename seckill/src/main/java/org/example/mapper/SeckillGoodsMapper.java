@@ -13,6 +13,6 @@ public interface SeckillGoodsMapper {
     @Select("select * from sk_goods_seckill where goods_id=#{goodsId}")
     SeckillGoods getByGoodsId(@Param("goodsId") Long goodsId);
 
-    @Update("update sk_goods_seckill set stock_count = #{stockCount} where id = #{id}")
+    @Update("update sk_goods_seckill set stock_count = #{stockCount} where id = #{id} and stock_count>0")
     int updateById(SeckillGoods id);
 }

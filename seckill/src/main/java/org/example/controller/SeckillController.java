@@ -10,6 +10,7 @@ import org.example.vo.GoodsVo;
 import org.example.vo.RespBean;
 import org.example.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,8 @@ public class SeckillController {
     SeckillOrderService seckillOrderService;
     @Autowired
     OrderService orderService;
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @PostMapping("/doSeckill")
     @ResponseBody
@@ -51,12 +54,14 @@ public class SeckillController {
             return RespBean.error(RespBeanEnum.EMPTY_STOCK);
         }
         //判断用户有没有买过
-        SeckillOrder order =seckillOrderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
+        SeckillOrder order = ((SeckillOrder) redisTemplate.opsForValue().get("order:" + user.getId() + ":" + goodsId));
+        //SeckillOrder order =seckillOrderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
         if(order!=null){
             return RespBean.error(RespBeanEnum.REPEAT_SECKILL);
         }
         //下单
         OrderInfo orderInfo = orderService.seckill(user,goodsVo);
+        if(orderInfo==null) return RespBean.error(RespBeanEnum.EMPTY_STOCK);
         return RespBean.success(orderInfo);
     }
 
