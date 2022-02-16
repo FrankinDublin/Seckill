@@ -4,7 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.example.domain.User;
 import org.example.service.GoodsService;
 import org.example.service.UserService;
+import org.example.vo.DetailVo;
 import org.example.vo.GoodsVo;
+import org.example.vo.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -69,10 +71,42 @@ public class GoodsController {
         return goodsList;
     }
 
-    //@RequestMapping("/toDetail/{goodsId}")
-    @RequestMapping(value = "/toDetail/{goodsId}",produces = "text/html;charset=utf-8")
+    @RequestMapping("/detail/{goodsId}")
     @ResponseBody
-    public String toDetail(Model model, User user, @PathVariable Long goodsId,HttpServletResponse response,HttpServletRequest request){
+    public RespBean toDetail(User user, @PathVariable Long goodsId){
+
+        GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
+
+        Date startDate = goodsVo.getStartDate();
+        Date endDate = goodsVo.getEndDate();
+        Date nowDate = new Date();
+        int seckillStatus = 0;
+        int remainSeconds = 0;
+        if(nowDate.before(startDate)){
+            //未开始
+            remainSeconds = (int)((startDate.getTime() - nowDate.getTime()) / 1000);
+        }else if(nowDate.after(endDate)){
+            //已结束
+            seckillStatus = 2;
+            remainSeconds = -1;
+        }else{
+            //进行中
+            seckillStatus = 1;
+        }
+        //后端传送的动态数据
+        DetailVo detailVo = new DetailVo();
+        detailVo.setUser(user);
+        detailVo.setGoodsVo(goodsVo);
+        detailVo.setRemainSeconds(remainSeconds);
+        detailVo.setSeckillStatus(seckillStatus);
+
+        return RespBean.success(detailVo);
+    }
+
+    //@RequestMapping("/toDetail/{goodsId}")
+    @RequestMapping(value = "/toDetail2/{goodsId}",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String toDetail2(Model model, User user, @PathVariable Long goodsId,HttpServletResponse response,HttpServletRequest request){
         //先从redis中获取
         ValueOperations valueOperations = redisTemplate.opsForValue();
         String goodsDetail = (String) valueOperations.get("goodsDetail:"+goodsId);

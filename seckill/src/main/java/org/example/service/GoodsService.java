@@ -9,4 +9,5 @@ public interface GoodsService {
     List<GoodsVo> findGoodsVo();
 
     GoodsVo findGoodsVoByGoodsId(Long goodsId);
+
 }

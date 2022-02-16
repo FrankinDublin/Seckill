@@ -4,11 +4,15 @@ import org.example.domain.OrderInfo;
 import org.example.domain.SeckillGoods;
 import org.example.domain.SeckillOrder;
 import org.example.domain.User;
+import org.example.exception.GlobalException;
 import org.example.mapper.OrderMapper;
+import org.example.service.GoodsService;
 import org.example.service.OrderService;
 import org.example.service.SeckillGoodsService;
 import org.example.service.SeckillOrderService;
 import org.example.vo.GoodsVo;
+import org.example.vo.OrderDetailVo;
+import org.example.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +29,8 @@ public class OrderServiceImpl implements OrderService {
     SeckillGoodsService seckillGoodsService;
     @Autowired
     SeckillOrderService seckillOrderService;
+    @Autowired
+    GoodsService goodsService;
     @Autowired
     OrderMapper orderMapper;
     @Override
@@ -54,5 +60,21 @@ public class OrderServiceImpl implements OrderService {
         seckillOrderService.save(order);
 
         return orderInfo;
+    }
+
+    @Override
+    public OrderDetailVo detail(Long orderId) {
+        /**
+        * @Description: 生成订单详情信息
+        * @Param: 订单编号
+        * @return: org.example.vo.OrderDetailVo
+        */
+        if(orderId == null) throw new GlobalException(RespBeanEnum.ORDER_NOT_EXIST);
+        OrderInfo orderById = orderMapper.getOrderById(orderId);
+        GoodsVo byGoodsId = goodsService.findGoodsVoByGoodsId(orderById.getGoodsId());
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+        orderDetailVo.setOrderInfo(orderById);
+        orderDetailVo.setGoodsVo(byGoodsId);
+        return orderDetailVo;
     }
 }

@@ -72,7 +72,7 @@
             },
             success:function(data){
                 if(data.code == 0){
-                    var result = data.data;
+                    var result = data.obj;
                     if(result < 0){
                         layer.msg("对不起，秒杀失败");
                     }else if(result == 0){//继续轮询
@@ -82,7 +82,7 @@
                     }else{
                         layer.confirm("恭喜你，秒杀成功！查看订单？", {btn:["确定","取消"]},
                             function(){
-                                window.location.href="/order_detail.htm?orderId="+result;
+                                window.location.href="/orderDetail.htm?orderId="+result;
                             },
                             function(){
                                 layer.closeAll();
@@ -99,17 +99,17 @@
     }
     function doSeckill() {
         $.ajax({
-            url: "/seckill/do_seckill",
+            url: "/seckill/doSeckill",
             type: "POST",
             data: {
                 goodsId: $("#goodsId").val(),
             },
             success: function (data) {
-                if (data.code == 0) {
-//                    window.location.href = "/order_detail.htm?orderId=" + data.data.id;
-                    getSeckillResult($("#goodsId").val());
+                if (data.code == 200) {
+                    window.location.href = "/orderDetail.htm?orderId=" + data.obj.id;
+//                    getSeckillResult($("#goodsId").val());
                 } else {
-                    layer.msg(data.msg);
+                    layer.msg(data.message);
                 }
             },
             error: function () {
@@ -121,7 +121,7 @@
     function render(detail) {
         var seckillStatus = detail.seckillStatus;
         var remainSeconds = detail.remainSeconds;
-        var goods = detail.goods;
+        var goods = detail.goodsVo;
         var user = detail.user;
         if (user) {
             $("#userTip").hide();
@@ -147,11 +147,11 @@
             url: "/goods/detail/" + goodsId,
             type: "GET",
             success: function (data) {
-                if (data.code == 0) {
+                if (data.code == 200) {
                     //将数据渲染出来
-                    render(data.data);
+                    render(data.obj);
                 } else {
-                    layer.msg(data.msg);
+                    layer.msg(data.message);
                 }
             },
             error: function () {

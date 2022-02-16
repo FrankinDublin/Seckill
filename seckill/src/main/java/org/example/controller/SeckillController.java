@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,13 +35,38 @@ public class SeckillController {
     @Autowired
     OrderService orderService;
 
-    @RequestMapping("/doSeckill")
-    public String doSeckill(Model model, User user,Long goodsId){
+    @PostMapping("/doSeckill")
+    @ResponseBody
+    public RespBean doSeckill(User user,Long goodsId){
         /**
         * @Description: 秒杀业务处理
         * @Param: [model, user, goodsId]
         * @return: 跳转网址
         */
+        if(user == null) return RespBean.error(RespBeanEnum.SESSION_ERROR);
+        //根据商品id获取商品信息
+        GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
+        //判断库存是否足够
+        if(goodsVo.getStockCount()<1){
+            return RespBean.error(RespBeanEnum.EMPTY_STOCK);
+        }
+        //判断用户有没有买过
+        SeckillOrder order =seckillOrderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
+        if(order!=null){
+            return RespBean.error(RespBeanEnum.REPEAT_SECKILL);
+        }
+        //下单
+        OrderInfo orderInfo = orderService.seckill(user,goodsVo);
+        return RespBean.success(orderInfo);
+    }
+
+    @RequestMapping("/doSeckill2")
+    public String doSeckill2(Model model, User user,Long goodsId){
+        /**
+         * @Description: 秒杀业务处理
+         * @Param: [model, user, goodsId]
+         * @return: 跳转网址
+         */
         if(user == null) return "login";
         model.addAttribute("user",user);
         //根据商品id获取商品信息
@@ -62,7 +88,6 @@ public class SeckillController {
         model.addAttribute("goods",goodsVo);
         return "orderDetail";
     }
-
 
 
 }

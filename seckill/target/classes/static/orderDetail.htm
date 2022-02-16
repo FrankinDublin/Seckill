@@ -60,8 +60,8 @@
 </html>
 <script>
     function render(detail){
-        var goods = detail.goods;
-        var order = detail.order;
+        var goods = detail.goodsVo;
+        var order = detail.orderInfo;
         $("#goodsName").text(goods.goodsName);
         $("#goodsImg").attr("src", goods.goodsImg);
         $("#orderPrice").text(order.goodsPrice);
@@ -88,10 +88,10 @@
                 orderId:orderId
             },
             success:function(data){
-                if(data.code == 0){
-                    render(data.data);
+                if(data.code == 200){
+                    render(data.obj);
                 }else{
-                    layer.msg(data.msg);
+                    layer.msg(data.message);
                 }
             },
             error:function(){
