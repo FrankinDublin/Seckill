@@ -6,21 +6,24 @@ import org.example.service.GoodsService;
 import org.example.service.UserService;
 import org.example.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.context.WebContext;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 优化前：1100
+ * 缓存后：1842
  * @description: 商品
  * @author: Frankin
  * @create: 2022-02-11 13:36
@@ -32,8 +35,14 @@ public class GoodsController {
     UserService userService;
     @Autowired
     GoodsService goodsService;
-    @RequestMapping("/toList")
-    public String toList(Model model,User user){
+    @Autowired
+    RedisTemplate redisTemplate;
+    @Autowired
+    ThymeleafViewResolver thymeleafViewResolver;    //用于手动渲染页面
+    //@RequestMapping("/toList")
+    @RequestMapping(value = "/toList",produces = "text/html;charset=utf-8")
+    @ResponseBody   //将页面跳转切换为返回页面（已缓存）的方式
+    public String toList(Model model,User user,HttpServletResponse response,HttpServletRequest request){
         /**
         * @Description: 跳转商品列表页
         * @Param: [session, model, ticket]
@@ -44,14 +53,31 @@ public class GoodsController {
         User user = userService.getUserByCookie(ticket, response, request);     //判断逻辑放入参数解析器中了
         System.out.println("user==null:"+user);
         if(user == null) return "login";*/
+
+        //从redis中获取页面
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        String goodsList = (String) valueOperations.get("goodsList");   //缓存的html一定是string类型的
+        if(!StringUtils.isEmpty(goodsList)) return goodsList;
+        //没有的话就手动渲染页面并放入redis
         model.addAttribute("user",user);
         model.addAttribute("goodsList",goodsService.findGoodsVo());
-        return "goods_list";
+        WebContext webContext = new WebContext(request,response,request.getServletContext(),request.getLocale(),model.asMap());
+        goodsList = thymeleafViewResolver.getTemplateEngine().process("goodsList", webContext);    //手动渲染
+        if(!StringUtils.isEmpty(goodsList)){
+            valueOperations.set("goodsList",goodsList,60, TimeUnit.SECONDS);
+        }
+        return goodsList;
     }
 
-    @RequestMapping("/toDetail/{goodsId}")
-    public String toDetail(Model model, User user, @PathVariable Long goodsId){
-
+    //@RequestMapping("/toDetail/{goodsId}")
+    @RequestMapping(value = "/toDetail/{goodsId}",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String toDetail(Model model, User user, @PathVariable Long goodsId,HttpServletResponse response,HttpServletRequest request){
+        //先从redis中获取
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        String goodsDetail = (String) valueOperations.get("goodsDetail:"+goodsId);
+        if(!StringUtils.isEmpty(goodsDetail)) return goodsDetail;
+        //获取不到时手动渲染并存入redis
         model.addAttribute("user",user);
 
         GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
@@ -76,7 +102,13 @@ public class GoodsController {
         model.addAttribute("seckillStatus",seckillStatus);
         model.addAttribute("remainSeconds", remainSeconds);
 
-        return "goods_detail";
+        WebContext webContext = new WebContext(request,response,request.getServletContext(),request.getLocale(),model.asMap());
+        goodsDetail = thymeleafViewResolver.getTemplateEngine().process("goodsDetail",webContext);
+        if(!StringUtils.isEmpty(goodsDetail)){
+            valueOperations.set("goodsDetail:"+goodsId,goodsDetail,60,TimeUnit.SECONDS);
+        }
+
+        return goodsDetail;
     }
 
 }
