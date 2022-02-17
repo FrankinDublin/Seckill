@@ -26,47 +26,47 @@ public class UserController {
         return RespBean.success(user);
     }
 
-    @RequestMapping("/mq")
-    @ResponseBody
-    public void mq() {
-        /**
-         * @Description: 测试简单模式
-         * @Param: []
-         * @return: void
-         */
-        mqSender.send("hello");
-    }
-
-    @RequestMapping("/mq/fanout")
-    @ResponseBody
-    public void mq01() {
-        /**
-         * @Description: 测试fanout模式
-         * @Param: []
-         * @return: void
-         */
-        mqSender.send01("hello");
-    }
-
-    @RequestMapping("/mq/direct01")
-    @ResponseBody
-    public void mq02() {
-        /**
-         * @Description: 测试direct模式
-         * @Param: []
-         * @return: void
-         */
-        mqSender.sendRed("hello");
-    }
-
-    @RequestMapping("/mq/direct02")
-    @ResponseBody
-    public void mq03() {
-        /**
-         * @Description: 测试direct模式
-         * @Param: []
-         * @return: void
-         */
-        mqSender.sendGreen("hello");
-    }
+//    @RequestMapping("/mq")
+//    @ResponseBody
+//    public void mq() {
+//        /**
+//         * @Description: 测试简单模式
+//         * @Param: []
+//         * @return: void
+//         */
+//        mqSender.send("hello");
+//    }
+//
+//    @RequestMapping("/mq/fanout")
+//    @ResponseBody
+//    public void mq01() {
+//        /**
+//         * @Description: 测试fanout模式
+//         * @Param: []
+//         * @return: void
+//         */
+//        mqSender.send01("hello");
+//    }
+//
+//    @RequestMapping("/mq/direct01")
+//    @ResponseBody
+//    public void mq02() {
+//        /**
+//         * @Description: 测试direct模式
+//         * @Param: []
+//         * @return: void
+//         */
+//        mqSender.sendRed("hello");
+//    }
+//
+//    @RequestMapping("/mq/direct02")
+//    @ResponseBody
+//    public void mq03() {
+//        /**
+//         * @Description: 测试direct模式
+//         * @Param: []
+//         * @return: void
+//         */
+//        mqSender.sendGreen("hello");
+//    }
 }

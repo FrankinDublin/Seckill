@@ -15,6 +15,7 @@ import org.example.vo.OrderDetailVo;
 import org.example.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,13 +42,18 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public OrderInfo seckill(User user, GoodsVo goodsVo) {
+        ValueOperations valueOperations = redisTemplate.opsForValue();
         //一个商品对应一个秒杀商品
         SeckillGoods seckillGoods = seckillGoodsService.getByGoodsId(goodsVo.getId());
         seckillGoods.setStockCount(seckillGoods.getStockCount()-1);
-        if(seckillGoods.getStockCount()<0) return null;
+        //if(seckillGoods.getStockCount()<0) return null;
         //更新秒杀商品库存数量
         int res = seckillGoodsService.updateById(seckillGoods);
-        if(res==0) return null;
+        if(seckillGoods.getStockCount()<1){
+            //通知redis该商品为空
+            valueOperations.set("isStockEmpty"+goodsVo.getId(),1);
+            return null;
+        }
         OrderInfo orderInfo = new OrderInfo();
         //生成订单
         orderInfo.setUserId(user.getId());
@@ -67,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(orderInfo.getId());
         seckillOrderService.save(order);
         //订单结果存入redis
-        redisTemplate.opsForValue().set("order:"+user.getId()+":"+goodsVo.getId(),order);
+        valueOperations.set("order:"+user.getId()+":"+goodsVo.getId(),order);
         return orderInfo;
     }
 

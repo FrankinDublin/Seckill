@@ -71,7 +71,7 @@
                 goodsId:$("#goodsId").val(),
             },
             success:function(data){
-                if(data.code == 0){
+                if(data.code == 200){
                     var result = data.obj;
                     if(result < 0){
                         layer.msg("对不起，秒杀失败");
@@ -82,6 +82,7 @@
                     }else{
                         layer.confirm("恭喜你，秒杀成功！查看订单？", {btn:["确定","取消"]},
                             function(){
+                                console.log(result+"abaabababa")
                                 window.location.href="/orderDetail.htm?orderId="+result;
                             },
                             function(){
@@ -106,8 +107,10 @@
             },
             success: function (data) {
                 if (data.code == 200) {
-                    window.location.href = "/orderDetail.htm?orderId=" + data.obj.id;
-//                    getSeckillResult($("#goodsId").val());
+                    //抢购后直接获得结果
+//                    window.location.href = "/orderDetail.htm?orderId=" + data.obj.id;
+                    //加入mq之后，抢购后返回排队中
+                    getSeckillResult($("#goodsId").val());
                 } else {
                     layer.msg(data.message);
                 }
