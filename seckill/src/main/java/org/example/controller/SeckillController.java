@@ -47,6 +47,7 @@ public class SeckillController {
         * @return: 跳转网址
         */
         if(user == null) return RespBean.error(RespBeanEnum.SESSION_ERROR);
+        /*  //开始通过redis预减库存优化
         //根据商品id获取商品信息
         GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
         //判断库存是否足够
@@ -63,6 +64,7 @@ public class SeckillController {
         OrderInfo orderInfo = orderService.seckill(user,goodsVo);
         if(orderInfo==null) return RespBean.error(RespBeanEnum.EMPTY_STOCK);
         return RespBean.success(orderInfo);
+        */
     }
 
     @RequestMapping("/doSeckill2")
