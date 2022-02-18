@@ -45,17 +45,26 @@ public class OrderServiceImpl implements OrderService {
         ValueOperations valueOperations = redisTemplate.opsForValue();
         //一个商品对应一个秒杀商品
         SeckillGoods seckillGoods = seckillGoodsService.getByGoodsId(goodsVo.getId());
-        seckillGoods.setStockCount(seckillGoods.getStockCount()-1);
+        //seckillGoods.setStockCount(seckillGoods.getStockCount() - 1);
         //if(seckillGoods.getStockCount()<0) return null;
         //更新秒杀商品库存数量
-        int res = seckillGoodsService.updateById(seckillGoods);
-        if(seckillGoods.getStockCount()<1){
+        boolean res = seckillGoodsService.reduceStock(seckillGoods);
+        System.out.println("user" + user.getNickname() + " buy " + res + ",rest=" + seckillGoods.getStockCount());
+        //更新成功时生成订单
+        if(res){
+            return createOrder(user,goodsVo);
+        }else{
             //通知redis该商品为空
-            valueOperations.set("isStockEmpty"+goodsVo.getId(),1);
+            //valueOperations.set("isStockEmpty"+goodsVo.getId(),1);
             return null;
         }
-        OrderInfo orderInfo = new OrderInfo();
+    }
+
+    @Transactional
+    @Override
+    public OrderInfo createOrder(User user, GoodsVo goodsVo){
         //生成订单
+        OrderInfo orderInfo = new OrderInfo();
         orderInfo.setUserId(user.getId());
         orderInfo.setGoodsId(goodsVo.getId());
         orderInfo.setDeliveryAddrId(0L);
@@ -73,7 +82,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(orderInfo.getId());
         seckillOrderService.save(order);
         //订单结果存入redis
-        valueOperations.set("order:"+user.getId()+":"+goodsVo.getId(),order);
+        redisTemplate.opsForValue().set("order:"+user.getId()+":"+goodsVo.getId(),order);
         return orderInfo;
     }
 

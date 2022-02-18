@@ -42,7 +42,7 @@ public class MQSender {
     * @return:
     */
     public void sendSeckillMessage(String msg) {
-        log.info("发送消息：" + msg);
+        //log.info("发送消息：" + msg);
         rabbitTemplate.convertAndSend("seckillExchage", "seckill.message", msg);
     }
 

@@ -6,4 +6,6 @@ public interface SeckillGoodsService {
     SeckillGoods getByGoodsId(Long goodsId);
 
     int updateById(SeckillGoods seckillGoods);
+
+    boolean reduceStock(SeckillGoods seckillGoods);
 }

@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         String ticket = UUIDUtil.uuid();
         //request.getSession().setAttribute(ticket,user);
         //将用户信息存入redis中
-        redisTemplate.opsForValue().set("user"+ticket,user,30, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set("user"+ticket,user);
         CookieUtil.addCookie(response,"userTicket",ticket);
 
         return RespBean.success(ticket);

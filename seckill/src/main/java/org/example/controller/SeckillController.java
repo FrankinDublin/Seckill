@@ -16,6 +16,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +34,7 @@ import java.util.Map;
 /**
  * 优化前：790
  * 加缓存：1453
+ * 优化后：1818
  * @description: 处理秒杀业务
  * @author: Frankin
  * @create: 2022-02-14 14:28
@@ -71,10 +75,20 @@ public class SeckillController implements InitializingBean {
         if(emptyStockMap.get(goodsId)) return RespBean.error(RespBeanEnum.EMPTY_STOCK);
         //预减库存
         Long stock = valueOperations.increment("seckillGoods:" + goodsId, -1);
+
         if(stock<0){
-            emptyStockMap.put(goodsId,true);
-            valueOperations.increment("seckillGoods:" + goodsId, 1); //库存会减到-1，这里补上
-            return RespBean.error(RespBeanEnum.EMPTY_STOCK);
+            try {
+                afterPropertiesSet();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //由于更新数据库的操作有可能取消，导致预减库存却没有实际购买，需要确认真实库存
+            Long stock2 = valueOperations.increment("seckillGoods:" + goodsId, -1);
+            if(stock2<0){
+                emptyStockMap.put(goodsId,true);
+                valueOperations.increment("seckillGoods:" + goodsId, 1); //库存会减到-1，这里补上
+                return RespBean.error(RespBeanEnum.EMPTY_STOCK);
+            }
         }
         SeckillMessage seckillMessage = new SeckillMessage(user,goodsId);
         //信息交给队列，在队列处下单，异步处理

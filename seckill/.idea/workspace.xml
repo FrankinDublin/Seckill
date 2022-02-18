@@ -13,24 +13,29 @@
     <list default="true" id="69493c27-1331-493b-9d99-09d944748c19" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/RabbitMQDirectConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/RabbitMQDirectConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/SeckillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/SeckillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mapper/SeckillOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mapper/SeckillOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mapper/SeckillGoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mapper/SeckillGoodsMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/rabbitmq/MQReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/rabbitmq/MQReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/rabbitmq/MQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/rabbitmq/MQSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/SeckillOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/SeckillOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/SeckillGoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/SeckillGoodsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/SeckillOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/SeckillOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/SeckillGoodsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/SeckillGoodsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/UserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/UserUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/goodsDetail.htm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/goodsDetail.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/config/RabbitMQDirectConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/config/RedisConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/config/RedisConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/controller/SeckillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/controller/SeckillController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mapper/SeckillGoodsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/mapper/SeckillGoodsMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/rabbitmq/MQReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/rabbitmq/MQReceiver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/rabbitmq/MQSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/rabbitmq/MQSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/service/SeckillOrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/service/SeckillOrderService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/service/impl/OrderServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/service/impl/SeckillOrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/service/impl/SeckillOrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/service/impl/SeckillGoodsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/service/impl/SeckillGoodsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/service/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/goodsDetail.htm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/goodsDetail.htm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,8 +187,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.App" />
-        <item itemvalue="应用程序.SeckillController" />
         <item itemvalue="应用程序.UserUtil" />
+        <item itemvalue="应用程序.SeckillController" />
         <item itemvalue="应用程序.SeckillOrderServiceImpl" />
         <item itemvalue="应用程序.MD5Util" />
       </list>
@@ -208,6 +213,8 @@
       <workItem from="1644985927749" duration="13143000" />
       <workItem from="1645074574854" duration="2683000" />
       <workItem from="1645077953903" duration="10261000" />
+      <workItem from="1645160410048" duration="7609000" />
+      <workItem from="1645170922384" duration="6253000" />
     </task>
     <servers />
   </component>
@@ -235,10 +242,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="414" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1644559439692" />
-    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1645085551855">
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1645170455008">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1645085551855" />
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1645170455008" />
     <state x="690" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1644646602033">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -259,38 +266,38 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="#项目结构/0.0.1920.1050@0.0.1920.1050" timestamp="1645082789728" />
-    <state width="1877" height="352" key="GridCell.Tab.0.bottom" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.0.center" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.0.left" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.0.right" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.1.center" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.1.left" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
-    <state width="1877" height="352" key="GridCell.Tab.1.right" timestamp="1645089107938">
+    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1645176511441">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1645089107938" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1645176511441" />
     <state width="1877" height="352" key="GridCell.Tab.2.bottom" timestamp="1645089107938">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -368,7 +375,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/controller/SeckillController.java</url>
-          <line>113</line>
+          <line>127</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>

@@ -10,4 +10,6 @@ public interface OrderService {
 
     OrderDetailVo detail(Long orderId);
 
+    OrderInfo createOrder(User user, GoodsVo goodsVo);
+
 }
