@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.example.domain.OrderInfo;
 import org.example.domain.SeckillGoods;
 import org.example.domain.SeckillOrder;
@@ -51,9 +52,9 @@ public class OrderServiceImpl implements OrderService {
         boolean res = seckillGoodsService.reduceStock(seckillGoods);
         System.out.println("user" + user.getNickname() + " buy " + res + ",rest=" + seckillGoods.getStockCount());
         //更新成功时生成订单
-        if(res){
-            return createOrder(user,goodsVo);
-        }else{
+        if (res) {
+            return createOrder(user, goodsVo);
+        } else {
             //通知redis该商品为空
             //valueOperations.set("isStockEmpty"+goodsVo.getId(),1);
             return null;
@@ -62,7 +63,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     @Override
-    public OrderInfo createOrder(User user, GoodsVo goodsVo){
+    public OrderInfo createOrder(User user, GoodsVo goodsVo) {
         //生成订单
         OrderInfo orderInfo = new OrderInfo();
         orderInfo.setUserId(user.getId());
@@ -82,18 +83,30 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(orderInfo.getId());
         seckillOrderService.save(order);
         //订单结果存入redis
-        redisTemplate.opsForValue().set("order:"+user.getId()+":"+goodsVo.getId(),order);
+        redisTemplate.opsForValue().set("order:" + user.getId() + ":" + goodsVo.getId(), order);
         return orderInfo;
+    }
+
+    /**
+     * @Description: 校验 验证码
+     * @Param:
+     * @return:
+     */
+    @Override
+    public boolean checkCaptcha(User user, Long goodsId, String captcha) {
+        if (user == null || goodsId < 0 || StringUtils.isEmpty(captcha)) return false;
+        String ans = (String) redisTemplate.opsForValue().get("captcha:" + user.getId() + ":" + goodsId);
+        return captcha.equals(ans);
     }
 
     @Override
     public OrderDetailVo detail(Long orderId) {
         /**
-        * @Description: 生成订单详情信息
-        * @Param: 订单编号
-        * @return: org.example.vo.OrderDetailVo
-        */
-        if(orderId == null) throw new GlobalException(RespBeanEnum.ORDER_NOT_EXIST);
+         * @Description: 生成订单详情信息
+         * @Param: 订单编号
+         * @return: org.example.vo.OrderDetailVo
+         */
+        if (orderId == null) throw new GlobalException(RespBeanEnum.ORDER_NOT_EXIST);
         OrderInfo orderById = orderMapper.getOrderById(orderId);
         GoodsVo byGoodsId = goodsService.findGoodsVoByGoodsId(orderById.getGoodsId());
         OrderDetailVo orderDetailVo = new OrderDetailVo();

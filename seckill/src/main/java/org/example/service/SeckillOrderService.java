@@ -9,4 +9,8 @@ public interface SeckillOrderService {
     void save(SeckillOrder order);
 
     Long getResult(User user, Long goodsId);
+
+    String createPath(User user, Long goodsId);
+
+    boolean checkPath(User user, Long goodsId, String path);
 }

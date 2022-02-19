@@ -1,9 +1,13 @@
 package org.example.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.wf.captcha.ArithmeticCaptcha;
+import lombok.extern.slf4j.Slf4j;
 import org.example.domain.OrderInfo;
 import org.example.domain.SeckillOrder;
 import org.example.domain.User;
+import org.example.exception.GlobalException;
+import org.example.limiter.AccessLimit;
 import org.example.rabbitmq.MQSender;
 import org.example.service.GoodsService;
 import org.example.service.OrderService;
@@ -26,10 +30,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 优化前：790
@@ -39,6 +47,7 @@ import java.util.Map;
  * @author: Frankin
  * @create: 2022-02-14 14:28
  */
+@Slf4j
 @Controller
 @RequestMapping("/seckill")
 public class SeckillController implements InitializingBean {
@@ -55,9 +64,9 @@ public class SeckillController implements InitializingBean {
     MQSender mqSender;
     Map<Long,Boolean> emptyStockMap = new HashMap<>();  //标记商品是否为空，减少售空后访问redis的次数
 
-    @PostMapping("/doSeckill")
+    @PostMapping("/{path}/doSeckill")
     @ResponseBody
-    public RespBean doSeckill(User user,Long goodsId){
+    public RespBean doSeckill(@PathVariable("path")String path, User user,Long goodsId){
         /**
         * @Description: 秒杀业务处理
         * @Param: [model, user, goodsId]
@@ -65,6 +74,8 @@ public class SeckillController implements InitializingBean {
         */
         if(user == null) return RespBean.error(RespBeanEnum.SESSION_ERROR);
         ValueOperations valueOperations = redisTemplate.opsForValue();
+        boolean res = seckillOrderService.checkPath(user,goodsId,path);
+        if(!res) return RespBean.error(RespBeanEnum.REQUEST_ILLEGAL);
         //判断用户有没有买过
         SeckillOrder order = ((SeckillOrder) valueOperations.get("order:" + user.getId() + ":" + goodsId));
         //SeckillOrder order =seckillOrderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
@@ -116,6 +127,31 @@ public class SeckillController implements InitializingBean {
         */
 
     }
+
+    @RequestMapping("/path")
+    @ResponseBody
+    @AccessLimit(second = 5,maxCount = 5)
+    public RespBean getPath(User user,Long goodsId,String captcha,HttpServletRequest request){
+        if(user==null)
+            return RespBean.error(RespBeanEnum.SESSION_ERROR);
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        String uri = request.getRequestURI();
+        captcha = "0";
+        //设置限流，5秒内允许5次访问，注解实现
+        /*Integer count = (Integer) valueOperations.get(uri + ":" + user.getId());
+        if(count==null){
+            valueOperations.set(uri+":"+user.getId(),1,5,TimeUnit.SECONDS);
+        }else if(count>5){
+            return RespBean.error(RespBeanEnum.ACCESS_LIMIT_REACHED);
+        }else {
+            valueOperations.increment(uri+":"+user.getId(),1);
+        }*/
+        boolean check = orderService.checkCaptcha(user,goodsId,captcha);
+        if(!check)
+            return RespBean.error(RespBeanEnum.ERROR_CAPTCHA);
+        String str = seckillOrderService.createPath(user,goodsId);
+        return RespBean.success(str);
+    }
     /**
     * @Description: 获取秒杀结果
     * @Param: 
@@ -127,6 +163,23 @@ public class SeckillController implements InitializingBean {
         if(user == null) return RespBean.error(RespBeanEnum.SESSION_ERROR);
         Long orderId = seckillOrderService.getResult(user,goodsId);
         return RespBean.success(orderId);
+    }
+
+    @RequestMapping("/captcha")
+    public void verifyCode(User user, Long goodsId, HttpServletResponse response){
+        if(user==null || goodsId<0)
+            throw new GlobalException(RespBeanEnum.REQUEST_ILLEGAL);
+        response.setContentType("image/jpg");
+        response.setHeader("Pragma","No-cache");
+        response.setHeader("Cache-Control","no-cache");
+        response.setDateHeader("Expires",0);
+        ArithmeticCaptcha captcha = new ArithmeticCaptcha(130, 32, 3);
+        redisTemplate.opsForValue().set("captcha:"+user.getId()+":"+goodsId,captcha.text(),300, TimeUnit.SECONDS);
+        try {
+            captcha.out(response.getOutputStream());
+        } catch (IOException e) {
+            log.error("验证码生成失败"+e.getMessage());
+        }
     }
     
     @RequestMapping("/doSeckill2")

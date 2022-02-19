@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     UserService service;
+
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
         Class clazz = methodParameter.getParameterType();
@@ -33,10 +34,6 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
-        HttpServletRequest request =  nativeWebRequest.getNativeRequest(HttpServletRequest.class);
-        HttpServletResponse response =  nativeWebRequest.getNativeResponse(HttpServletResponse.class);
-        String ticket = CookieUtil.getCookie(request,"userTicket").getValue();
-        if(StringUtils.isEmpty(ticket)) return null;
-        return service.getUserByCookie(ticket,response,request);
+        return UserContext.getUser();
     }
 }

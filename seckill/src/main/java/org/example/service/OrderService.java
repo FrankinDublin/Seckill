@@ -12,4 +12,5 @@ public interface OrderService {
 
     OrderInfo createOrder(User user, GoodsVo goodsVo);
 
+    boolean checkCaptcha(User user, Long goodsId, String captcha);
 }
